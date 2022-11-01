@@ -1,2 +1,4 @@
 /data/all_old.zip
 /data/strict_addressing.csv
+./.ipynb_checkpoints
+./__pycache__
