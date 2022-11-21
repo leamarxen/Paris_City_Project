@@ -1,2 +1,2 @@
-# Paris_City_Project
+# Paris City project
 FDH Paris City Project
