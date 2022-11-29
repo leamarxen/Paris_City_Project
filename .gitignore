@@ -1,0 +1,30 @@
+
+*.cpg
+*.prj
+*.shp
+*.shx
+*.dbf
+*.sbx
+*.pdf
+*.TXT
+*.doc
+*.docx
+*.qpj
+*.xml
+*.sbn
+data/Voierie Parisienne Historique/__MACOSX/._Voierie en 1300
+data/Voierie Parisienne Historique/__MACOSX/._Voierie en 1380
+data/Voierie Parisienne Historique/__MACOSX/._Voierie en 1380 (Autre)
+data/Voierie Parisienne Historique/__MACOSX/._Voierie en 1553 (Plan de Bale)
+data/Voierie Parisienne Historique/__MACOSX/._Voierie en 1720-1725 (Seulement Nord de la Seine)
+data/Voierie Parisienne Historique/__MACOSX/._Voierie en 1791 (Plan Verniquet)
+bottins.pkl
+.ipynb_checkpoints/first_look_parisdata-checkpoint.ipynb
+.ipynb_checkpoints/Preprocessing-checkpoint.ipynb
+__pycache__/alignment.cpython-38.pyc
+__pycache__/preprocessing.cpython-38.pyc
+data/try.csv
+data/try.qmd
+data/bottins_prep.pkl
+data/strict_addressing.csv
+data/1791.zip
