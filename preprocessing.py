@@ -33,7 +33,9 @@ def substitute_col_by_dict(column, word_dict):
     :column: pandas Series which contains words/characters to substitute
     :word_dict: dictionary of the form {"incorrect/abbreviated word(s):"correct word(s)"}
     '''
+    return column.apply(substitute_row_by_dict, args=(word_dict,))
 
+'''
     #two different replacement methods to reduce computation time 
     # abbreviations without spaces (" ")   
     words_no_space = [entry for entry in word_dict.keys() if " " not in entry]
@@ -51,5 +53,5 @@ def substitute_col_by_dict(column, word_dict):
     return result
 
 
-
+'''
 
