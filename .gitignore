@@ -3,6 +3,7 @@
 /data/1791.zip
 /data/voie.zip
 /data/strict_addressing.csv
+/data/bottins_prep.pkl
 /.ipynb_checkpoints
 /__pycache__
 /old
@@ -20,4 +21,5 @@
 *.qpj
 *.xml
 *.sbn
+*.pkl
 
