@@ -1,3 +1,4 @@
+
 /data/all_old.zip
 /data/1791.zip
 /data/voie.zip
@@ -5,3 +6,18 @@
 /.ipynb_checkpoints
 /__pycache__
 /old
+
+*.cpg
+*.prj
+*.shp
+*.shx
+*.dbf
+*.sbx
+*.pdf
+*.TXT
+*.doc
+*.docx
+*.qpj
+*.xml
+*.sbn
+
