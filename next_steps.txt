@@ -1,0 +1,18 @@
+# Ziele:
+- Timeline/Change Berufe & Stassen
+- Raster, wie arbeiten mit 
+    - Centroids / Adressen?
+- Strassen
+    - Visualisierung
+    
+# Fundament
+- 1836 Datensatz:
+    -  dup. strassen gemerged und 1 shapefile
+- Bottin Daten:
+    - Preprocessing voies 
+        - shortstreet alignment
+        - fuzzy matching
+        (Describe quality)
+    - Berufe bereinigt
+    - Funktion, d. eine Strasse einem Bottin Eintrag zuordnet
+
