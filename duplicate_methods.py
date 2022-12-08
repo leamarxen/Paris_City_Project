@@ -43,7 +43,7 @@ def merge_streets_final(Dataframe):
 
     # Define representative
     representative = Dataframe.iloc[0]
-    representative.geometry = Dataframe.iloc[0,14]
+    representative.geometry = Dataframe.iloc[0,:].geometry
     representative.matching = new_identifiers
     representative.year = new_year
     return(representative)
