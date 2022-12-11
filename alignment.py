@@ -33,6 +33,24 @@ def align_on_column(df_not_aligned, df_streets, df_aligned=pd.DataFrame(),
 
 #methods for fuzzy matching
 
+#ravis code
+def simple_processor(token: str) -> str:
+    """A string processor to return the same string as input.
+        This dummy processor is used to avoid the default processor of the Rapidfuzz module to calculate string similarity.
+
+    Parameters
+    ----------
+    token : str
+        The input string to process.
+
+    
+    Returns
+    -------
+    str
+        The output string same as the input string.
+    """
+    return token
+
 def get_closest_street_w_cutoff(additional_args, bottin_data):
     streets, score_cutoff = additional_args
     best_one = process.extractOne(bottin_data, streets, processor=simple_processor, scorer=fuzz.ratio,
