@@ -1,4 +1,8 @@
 import pandas as pd
+from fuzzywuzzy import process, fuzz
+import multiprocessing
+from multiprocessing.dummy import Pool
+from functools import partial
 
 def align_on_column(df_not_aligned, df_streets, df_aligned=pd.DataFrame(), 
                     mergeOnLeft="street", mergeOnRight="street", align_method=""):
@@ -25,3 +29,27 @@ def align_on_column(df_not_aligned, df_streets, df_aligned=pd.DataFrame(),
         f"#total aligned: {len(aligned)}, newly aligned: {len(newly_aligned)}, not aligned: {len(not_aligned)}")
     
     return aligned, not_aligned
+
+
+#methods for fuzzy matching
+
+def get_closest_street_w_cutoff(additional_args, bottin_data):
+    streets, score_cutoff = additional_args
+    best_one = process.extractOne(bottin_data, streets, processor=simple_processor, scorer=fuzz.ratio,
+                                score_cutoff=score_cutoff)
+    if best_one:
+        return (bottin_data, best_one[0])
+
+def get_fuzzy_dict(streets, bottin_streets, score_cutoff):
+    pool = Pool(multiprocessing.cpu_count())
+
+    results = pool.map(partial(get_closest_street_w_cutoff, (streets, score_cutoff)), bottin_streets)
+
+    pool.close()
+    pool.join()
+
+    results_set = set(results)
+    results_set.remove(None)
+    fuzzy_dict = dict(results_set)
+
+    return fuzzy_dict
