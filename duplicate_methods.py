@@ -1,5 +1,9 @@
 import pandas as pd
 from shapely.ops import linemerge
+import numpy as np
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import connected_components
+
 
 def add_overlap_indices(Dataframe, current_row, comparing_row):
     # Checks if two streets overlap, if they do a "match identifier" is added to the street 
@@ -152,3 +156,21 @@ def compare_point(point, gridlist):
         if point >= gridlist.iloc[index-1] and point < gridlist:
             return(index)
             
+
+
+def check_overlap(buffer_list):
+    '''
+    Checks if all streets in a buffer_list overlap. If they are all connected, return True, else return False.
+    '''
+    len_buffer = len(buffer_list)
+    intersects = np.zeros((len_buffer, len_buffer))
+
+    for i in range(len_buffer):
+        for j in range(len_buffer):
+            intersects[i,j] = int(buffer_list[i].intersects(buffer_list[j]))
+    n_components = connected_components(csgraph=csr_matrix(intersects), directed=False, return_labels=False)
+    
+    if n_components == 1:
+        return True
+    else:
+        return False
