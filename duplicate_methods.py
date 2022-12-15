@@ -132,3 +132,23 @@ def duplicate_final(Dataframe, streetcolumn):
         Dataframe = pd.concat([Dataframe, MatchingStreetname])
 
     return Dataframe
+
+
+
+def assign_gridnumber(Dataframe,gridvalues_X, gridvalues_Y):
+    # Assigns Streets to a given grid
+
+    # Create Centroid for each street
+    Dataframe.loc[:,"centroid"] = Dataframe.centroid
+    ## Check X coordinates
+    Dataframe.loc[:,"gridX"] = Dataframe.apply(lambda row: compare_point(row.centroid.x, gridvalues_X))
+    ## Check Y coordinates
+    Dataframe.loc[:,"gridY"] = Dataframe.apply(lambda row: compare_point(row.centroid.y, gridvalues_Y))
+
+    return Dataframe
+
+def compare_point(point, gridlist):
+    for index in range(1,len(gridlist)):
+        if point >= gridlist.iloc[index-1] and point < gridlist:
+            return(index)
+            
