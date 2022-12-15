@@ -1,0 +1,3 @@
+# Outcome of the Tag Creation
+
+This folder will store the files that contain the dataset enriched with tags. The CSV file will contain the tags for each entry in the dataset of Paris addresses in a column as a list. While the information about the RICHELIEU district is stored in a JSON file with the Street name as the first-level key, the number in the street as the second-level key, and the people are stored in a list per year.
