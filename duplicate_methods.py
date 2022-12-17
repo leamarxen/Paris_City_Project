@@ -3,6 +3,8 @@ from shapely.ops import linemerge
 import numpy as np
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import connected_components
+from pyproj import Proj, transform
+import geopandas as gpd
 
 
 def add_overlap_indices(Dataframe, current_row, comparing_row):
@@ -139,26 +141,34 @@ def duplicate_final(Dataframe, streetcolumn):
 
 
 
-def assign_gridnumber(Dataframe,gridvalues_X, gridvalues_Y):
+def assign_gridnumber(Dataframe, gridvalues):
     # Assigns Streets to a given grid
-
     # Create Centroid for each street
-    Dataframe.loc[:,"centroid"] = Dataframe.centroid
+    #Dataframe["centroid"] = Dataframe.centroid
     ## Check X coordinates
-    Dataframe.loc[:,"gridX"] = Dataframe.apply(lambda row: compare_point(row.centroid.x, gridvalues_X))
-    ## Check Y coordinates
-    Dataframe.loc[:,"gridY"] = Dataframe.apply(lambda row: compare_point(row.centroid.y, gridvalues_Y))
+    Dataframe.apply(lambda x: print(x.centroid))
+    #    Dataframe["gridX"] = Dataframe.apply(lambda row: compare_point(row, gridvalues, "longitude"))
+#    ## Check Y coordinates
+#    Dataframe["gridY"] = Dataframe.apply(lambda row: compare_point(row, gridvalues, "latitude"))
+
 
     return Dataframe
 
-def compare_point(point, gridlist):
+def compare_point(row, gridlist, axis):
+    position_dict = {"longitude":0, "latitude":1}
+    position = position_dict[axis]
+    point = row["centroid"][position]
     for index in range(1,len(gridlist)):
-        if point >= gridlist.iloc[index-1] and point < gridlist:
+        if point >= gridlist.iloc[index-1][position] and point < gridlist[index][position]:
             return(index)
 
-def translate_geopoints(longitude, latitude):
-    
-            
+def translate_geopoints(geopoints):
+    inProj = Proj('epsg:4326')
+    outProj = Proj('epsg:3857')
+    transformed = []
+    for index,value in enumerate(geopoints):
+        transformed.append(transform(inProj,outProj,value[0],value[1]))
+    return transformed
 
 
 def check_overlap(buffer_list):
