@@ -151,4 +151,7 @@ def compare_point(point, gridlist):
     for index in range(1,len(gridlist)):
         if point >= gridlist.iloc[index-1] and point < gridlist:
             return(index)
+
+def translate_geopoints(longitude, latitude):
+    
             
