@@ -5,6 +5,7 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import connected_components
 from pyproj import Proj, transform
 import geopandas as gpd
+import matplotlib.pyplot as plt
 
 
 def add_overlap_indices(Dataframe, current_row, comparing_row):
@@ -141,26 +142,39 @@ def duplicate_final(Dataframe, streetcolumn):
 
 
 
-def assign_gridnumber(Dataframe, gridvalues):
+def assign_gridnumber(Dataframe, gridX, gridY):
     # Assigns Streets to a given grid
-    # Create Centroid for each street
-    #Dataframe["centroid"] = Dataframe.centroid
+
+    # Translate in right coordinate system
+    #gridX = translate_geopoints(gridX)
+    #gridY = translate_geopoints(gridY)
+
+    ## Check Y coordinates
+    Dataframe["gridY"] = Dataframe.apply(lambda row: compare_point_y(row,gridY), axis=1)
     ## Check X coordinates
-    Dataframe.apply(lambda x: print(x.centroid))
-    #    Dataframe["gridX"] = Dataframe.apply(lambda row: compare_point(row, gridvalues, "longitude"))
-#    ## Check Y coordinates
-#    Dataframe["gridY"] = Dataframe.apply(lambda row: compare_point(row, gridvalues, "latitude"))
+    Dataframe["gridX"] = Dataframe.apply(lambda row: compare_point_x(row,gridX), axis=1)
+    Dataframe["grid"] = (Dataframe["gridY"]-1) * (len(gridX)-1) + Dataframe["gridX"]
+    Dataframe["color"] = Dataframe.apply(lambda x: plt.cm.get_cmap(x["grid"], name='hsv'), axis=1)
+    print(gridY)
+    return 0
 
-
-    return Dataframe
-
-def compare_point(row, gridlist, axis):
-    position_dict = {"longitude":0, "latitude":1}
-    position = position_dict[axis]
-    point = row["centroid"][position]
-    for index in range(1,len(gridlist)):
-        if point >= gridlist.iloc[index-1][position] and point < gridlist[index][position]:
+def compare_point_x(row, gridX):
+    point = float(row["centroid"].x)
+    for index in range(1,len(gridX)):
+        previous = float(gridX[index-1][1])
+        current =  float(gridX[index][1])
+        if point > previous and point <= current:
             return(index)
+            
+
+def compare_point_y(row, gridY):
+    point = float(row["centroid"].y)
+    for index in range(1,len(gridY)):
+        previous = float(gridY[index-1][0])
+        current =  float(gridY[index][0])
+        if point > previous and point <= current:
+            return(int(index))
+
 
 def translate_geopoints(geopoints):
     inProj = Proj('epsg:4326')
