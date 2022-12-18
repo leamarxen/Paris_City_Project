@@ -154,8 +154,6 @@ def assign_gridnumber(Dataframe, gridX, gridY):
     ## Check X coordinates
     Dataframe["gridX"] = Dataframe.apply(lambda row: compare_point_x(row,gridX), axis=1)
     Dataframe["grid"] = (Dataframe["gridY"]-1) * (len(gridX)-1) + Dataframe["gridX"]
-    Dataframe["color"] = Dataframe.apply(lambda x: plt.cm.get_cmap(x["grid"], name='hsv'), axis=1)
-    print(gridY)
     return 0
 
 def compare_point_x(row, gridX):
@@ -164,7 +162,7 @@ def compare_point_x(row, gridX):
         previous = float(gridX[index-1][1])
         current =  float(gridX[index][1])
         if point > previous and point <= current:
-            return(index)
+            return(int(index))
             
 
 def compare_point_y(row, gridY):
@@ -201,3 +199,19 @@ def check_overlap(buffer_list):
         return True
     else:
         return False
+
+def create_grid(y_steps, x_steps, Dataframe):
+    
+    min_y = min(Dataframe["centroid"].y) - 0.01
+    max_y = max(Dataframe["centroid"].y)
+
+    min_x = min(Dataframe["centroid"].x) - 0.01
+    max_x = max(Dataframe["centroid"].x)
+
+    stepsizeY = (max_y - min_y)/y_steps + 0.01
+    gridY = [[min_y + stepsizeY * x, 0] for x in range(0,y_steps+1)]
+
+    stepsizeX = (max_x - min_x)/x_steps + 0.01
+    gridX = [[0, min_x + stepsizeX * x] for x in range(0,x_steps+1)]
+    
+    return gridX, gridY
