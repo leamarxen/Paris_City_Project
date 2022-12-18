@@ -104,7 +104,6 @@ def duplicate_final(Dataframe, streetcolumn):
     streetnames = Dataframe[streetcolumn].unique()
     Dataframe["matching"] = pd.np.empty((len(Dataframe), 0)).tolist()
 
-    # For each street name
     for streetname in streetnames:
         ## Filter DF for street name and create new temporary Dataframe
         filter = Dataframe[streetcolumn] == streetname
