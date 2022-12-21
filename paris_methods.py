@@ -185,15 +185,30 @@ def translate_geopoints(geopoints):
 def check_overlap(buffer_list):
     '''
     Checks if all streets in a buffer_list overlap. If they are all connected, return True, else return False.
+
+    Parameters
+    ---------------
+    :buffer_list: list of geometry objects (in our case: list with buffered streets)
+
+    Returns
+    ---------------
+    True: all streets/objects are connected (they overlap)
+    False: there is at least one pair of streets which are not connected 
+                                    (also not through other street(s) in buffer_list)
     '''
     len_buffer = len(buffer_list)
+    # instantiate a numpy matrix which will store in entry (i,j) if street i and j overlap
     intersects = np.zeros((len_buffer, len_buffer))
 
+    # go through each pair of streets and check if they overlap
     for i in range(len_buffer):
         for j in range(len_buffer):
+            # if street i and j overlap, write 1, otherwise 0
             intersects[i,j] = int(buffer_list[i].intersects(buffer_list[j]))
-    n_components = connected_components(csgraph=csr_matrix(intersects), directed=False, return_labels=False)
     
+    # treat intersects matrix as adjacency matrix of a graph
+    # if the graph is connected (n_components=1), all streets overlap
+    n_components = connected_components(csgraph=csr_matrix(intersects), directed=False, return_labels=False)
     if n_components == 1:
         return True
     else:

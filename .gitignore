@@ -4,11 +4,15 @@
 /data/voie.zip
 /data/strict_addressing.csv
 /data/bottins_prep.pkl
+/data/bottins_tagged_prep.pkl
+/data/unique_aligned.pkl
+/data/unique_aligned_tagged.pkl
 /.ipynb_checkpoints
 /__pycache__
 /old
 /data
 /wiki
+/figures
 
 *.cpg
 *.prj
@@ -23,5 +27,7 @@
 *.qpj
 *.xml
 *.sbn
-*.pkl
 
+Enriching-RICH-Data-main/data/outcome_of_current_project/paris_jobs_with_tags_richelieu_project.zip
+Enriching-RICH-Data-main/data/strict_addressing.csv
+data/paris_jobs_with_tags_richelieu_project.csv
