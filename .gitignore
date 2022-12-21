@@ -12,7 +12,6 @@
 /old
 /data
 /wiki
-/figures
 
 *.cpg
 *.prj
@@ -27,6 +26,8 @@
 *.qpj
 *.xml
 *.sbn
+*.jpg
+*.png
 
 Enriching-RICH-Data-main/data/outcome_of_current_project/paris_jobs_with_tags_richelieu_project.zip
 Enriching-RICH-Data-main/data/strict_addressing.csv
