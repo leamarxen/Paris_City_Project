@@ -4,10 +4,12 @@
 /data/voie.zip
 /data/strict_addressing.csv
 /data/bottins_prep.pkl
+/data/bottins_tagged_prep.pkl
+/data/unique_aligned.pkl
+/data/unique_aligned_tagged.pkl
 /.ipynb_checkpoints
 /__pycache__
 /old
-/data
 
 *.cpg
 *.prj
@@ -22,5 +24,4 @@
 *.qpj
 *.xml
 *.sbn
-*.pkl
 
