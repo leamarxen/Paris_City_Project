@@ -214,13 +214,17 @@ def check_overlap(buffer_list):
     else:
         return False
 
-def create_grid(y_steps, x_steps, Dataframe):
-    
-    min_y = min(Dataframe["centroid"].y) - 0.01
-    max_y = max(Dataframe["centroid"].y)
 
-    min_x = min(Dataframe["centroid"].x) - 0.01
-    max_x = max(Dataframe["centroid"].x)
+def create_grid(y_steps, x_steps, Dataframe):
+   # Creates a evenly spaced grid with the given parameters
+ 
+    bounds = Dataframe["centroid"].bounds
+
+    min_y = np.min(bounds.loc[:,"miny"]) - 0.01
+    max_y = np.max(bounds.loc[:,"maxy"])
+
+    min_x = np.min(bounds.loc[:,"minx"]) - 0.01
+    max_x = np.max(bounds.loc[:,"maxx"]) 
 
     stepsizeY = (max_y - min_y)/y_steps + 0.01
     gridY = [[min_y + stepsizeY * x, 0] for x in range(0,y_steps+1)]
