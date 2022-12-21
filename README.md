@@ -11,7 +11,7 @@ More information can be found on the wiki page: [Paris: address book of the past
 There are several jupyter notebooks which were used for the alignment and analysis of the data. They should be executed in the order they are presented hereunder. For the sake of clarity and reusability, we collected the function of each notebook in seperate python files. The files used for a notebook will be given in brackets.
 
 * **Preprocessing.ipnyb (preprocessing.py)**: Preprocessing of the street names in the Bottin Data, including substitution of abbreviations.
-* **street_processing.ipnyb (preprocessing.py, paris_methods.py)**: Aligning the two street network datasets "Open Data" (2022) and "Vasserot" (1836), solving conflicts for non-unique entries
+* **Street_processing.ipnyb (preprocessing.py, paris_methods.py)**: Aligning the two street network datasets "Open Data" (2022) and "Vasserot" (1836), solving conflicts for non-unique entries
 * **Alignment.ipnyb (preprocessing.py, alignment.py)**: Aligning bottin streets with the streets of the street data computed in street_processing.ipnyb
 * **Analysis.ipynb (analysis.py)**: Analysis on the aligned data
 
