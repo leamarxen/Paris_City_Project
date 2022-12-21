@@ -1,0 +1,18 @@
+==== Vasserot duplicate streets ==== 
+
+In the "Vasserot" dataset streets are often named more than once.  This is
+because the authors of the dataset treated segments of the same street as a
+unique entity and because in Paris some streetnames were not unique during
+that time. For our analysis we needed to differentiate between those two cases
+and combine the geolocated data of all street segments. 
+
+To combine street segments we used the shapely package to see if streets with
+the same name are overlapping or are closer than a given distance. In the end
+we decided on a distance of 200meters, after checking the results manually.
+
+With this approach we could reduce the number of duplicate streetnames from
+729 to 88. We excluded those duplicate streets from further analysis.
+
+==== Comparing Opendata and Vasserot streets ====
+
+To be able to assign each streetname  
