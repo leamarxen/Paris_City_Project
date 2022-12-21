@@ -42,22 +42,25 @@ Aligned data:
     ├── README.md <- The top-level README for this project.
     │
     ├── Enriching-RICH-Data-main <- Code by Ravinithesh Annapureddy 
-        (https://github.com/ravinitheshreddy/Enriching-RICH-Data) 
-        to clean professions and create profession tags in Bottin Dataset, 
-        slightly modified to fit it to our data
+    |   (https://github.com/ravinitheshreddy/Enriching-RICH-Data) 
+    |   to clean professions and create profession tags in Bottin Dataset, 
+    |   slightly modified to fit it to our data
     │
     ├── data <- This subfolder contains all the data needed for this project 
-                as well as intermediary results. Some data files were too large 
-                and can thus be found on our shared Google Drive (see section "Data").
+    |           as well as intermediary results. Some data files were too large 
+    |           and can thus be found on our shared Google Drive (see section "Data").
+    |
+    ├── figures <- gif data computed in Analysis.ipynb
     |
     └── Jupyter Notebooks and Python files (see section "Notebooks" for closer description)
         - Alignment.ipynb
         - alignment.py
-        - analysis.ipynb
+        - Analysis.ipynb
+        - analysis.py
         - paris_methods.py
         - Preprocessing.ipynb
         - preprocessing.py
-        - street_processing.ipynb
+        - Street_processing.ipynb
 
 # Team
 
