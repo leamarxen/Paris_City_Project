@@ -52,15 +52,15 @@ Aligned data:
     |
     ├── figures <- gif data computed in Analysis.ipynb
     |
-    └── Jupyter Notebooks and Python files (see section "Notebooks" for closer description)
-        - Alignment.ipynb
-        - alignment.py
-        - Analysis.ipynb
-        - analysis.py
-        - paris_methods.py
-        - Preprocessing.ipynb
-        - preprocessing.py
-        - Street_processing.ipynb
+    ├──  Jupyter Notebooks and Python files (see section "Notebooks" for closer description)
+    |   - Alignment.ipynb
+    |   - alignment.py
+    |   - Analysis.ipynb
+    |   - analysis.py
+    |   - paris_methods.py
+    |   - Preprocessing.ipynb
+    |   - preprocessing.py
+    └──   - Street_processing.ipynb
 
 # Team
 
