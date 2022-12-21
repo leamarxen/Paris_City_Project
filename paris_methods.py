@@ -233,3 +233,16 @@ def create_grid(y_steps, x_steps, Dataframe):
     gridX = [[0, min_x + stepsizeX * x] for x in range(0,x_steps+1)]
     
     return gridX, gridY
+
+
+def get_change_over_years(df, yearcolumn="annee_bin"):
+# function that creates dataframe with all jobs for a given bin and assigns jobs to that bin
+    pivot = pd.pivot_table(df, values= "rue", index= "tags", columns = yearcolumn, aggfunc="count")
+    pivot = pivot.fillna(0)
+    pivot = pivot.iloc[1:,1:]
+    pivot_rel = pivot.apply(lambda col: col/sum(col))
+    change_year = []
+    for year in range(1, len(pivot_rel.columns)):
+        dif = sum(abs(pivot_rel.iloc[:,year] - pivot_rel.iloc[:,year-1]))/2
+        change_year.append(dif)
+    return(change_year, pivot.columns[1:])
