@@ -13,7 +13,7 @@ There are several jupyter notebooks which were used for the alignment and analys
 * **Preprocessing.ipnyb (preprocessing.py)**: Preprocessing of the street names in the Bottin Data, including substitution of abbreviations.
 * **street_processing.ipnyb (preprocessing.py, paris_methods.py)**: Aligning the two street network datasets "Open Data" (2022) and "Vasserot" (1836), solving conflicts for non-unique entries
 * **Alignment.ipnyb (preprocessing.py, alignment.py)**: Aligning bottin streets with the streets of the street data computed in street_processing.ipnyb
-* **analysis.ipynb ()**: Analysis on the aligned data
+* **Analysis.ipynb (analysis.py)**: Analysis on the aligned data
 
 # Data
 The following data has been used:
