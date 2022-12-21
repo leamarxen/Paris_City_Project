@@ -60,7 +60,8 @@ Aligned data:
     |   - paris_methods.py
     |   - Preprocessing.ipynb
     |   - preprocessing.py
-    └──   - Street_processing.ipynb
+    |   - Street_processing.ipynb
+    └──
 
 # Team
 
